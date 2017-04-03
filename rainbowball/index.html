@@ -80,15 +80,14 @@
         // collision handling
         if(x+dx > canvas.width - ballRadius || x+dx < ballRadius){
             dx = -dx;
-            ballColor = "blue";
+            colorN++;
         }
         if(y+dy > canvas.height - ballRadius || y+dy < ballRadius){
             dy = -dy;
-            ballColor = "red";
+            colorN++;
         }
         x+=dx;
         y+=dy;
-        colorN++;
     }
 
     setInterval(draw, 10);
