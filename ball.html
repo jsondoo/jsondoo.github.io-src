@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>What is this black magic</title>
+    <style>
+        * { padding: 0; margin: 0; }
+        canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas" width="600" height="600"></canvas>
+
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d"); // tool we use to paint the canvas
+
+    var ballRadius = 12;
+    var x = canvas.width/2;
+    var y = canvas.height - 30;
+    var dx = -2.5;
+    var dy = -2.5;
+    var ballColor = "green";
+
+    var paddleHeight = 10;
+    var paddleWidth = 75;
+    var paddleX = (canvas.width - paddleWidth) / 2;
+
+    // SO MANY GLOBAL VARIABLES
+    var rightPressed = false;
+    var leftPressed = false;
+
+
+
+    // our main function
+    function draw(){
+        ctx.clearRect(0,0,canvas.width, canvas.height);
+        drawBall();
+    }
+
+    function drawBall(){
+        ctx.beginPath();
+        // x, y, arc radius, start angle, end angle (radian)
+        ctx.arc(x,y,ballRadius,0, Math.PI*2);
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+        ctx.fillStyle = ballColor;
+        ctx.fill();
+        ctx.closePath();
+
+        // collision handling
+        if(x+dx > canvas.width - ballRadius || x+dx < ballRadius){
+            dx = -dx;
+            ballColor = "blue";
+        }
+        if(y+dy > canvas.height - ballRadius || y+dy < ballRadius){
+            dy = -dy;
+            ballColor = "red";
+        }
+        x+=dx;
+        y+=dy;
+    }
+
+    function drawPaddle() {
+        ctx.beginPath();
+        ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+        ctx.fillStyle = "#0095DD";
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    setInterval(draw, 10);
+</script>
+
+</body>
+</html>
