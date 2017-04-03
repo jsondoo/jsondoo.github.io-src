@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<canvas id="myCanvas" width="600" height="600"></canvas>
+<canvas id="myCanvas" width="450" height="600"></canvas>
 
 <script>
     var canvas = document.getElementById("myCanvas");
@@ -19,24 +19,52 @@
     var ballRadius = 12;
     var x = canvas.width/2;
     var y = canvas.height - 30;
-    var dx = -2.5;
-    var dy = -2.5;
+    var dx = -3;
+    var dy = -3;
+
+    var colorN = 0; // 0 to 9
     var ballColor = "green";
 
-    var paddleHeight = 10;
-    var paddleWidth = 75;
-    var paddleX = (canvas.width - paddleWidth) / 2;
-
-    // SO MANY GLOBAL VARIABLES
-    var rightPressed = false;
-    var leftPressed = false;
-
-
-
-    // our main function
     function draw(){
-        ctx.clearRect(0,0,canvas.width, canvas.height);
+        // ctx.clearRect(0,0,canvas.width, canvas.height);
+        changeBallColor();
         drawBall();
+    }
+
+    function changeBallColor(){
+        var val = colorN % 10;
+        switch(val){
+            case 0:
+                ballColor = "red";
+                break;
+            case 1:
+                ballColor = "orange";
+                break;
+            case 2:
+                ballColor = "yellow";
+                break;
+            case 3:
+                ballColor = "green";
+                break;
+            case 4:
+                ballColor = "#66FFFF"; // cyan
+                break;
+            case 5:
+                ballColor = "blue";
+                break;
+            case 6:
+                ballColor = "purple";
+                break;
+            case 7:
+                ballColor = "#FF66FF"; // pink
+                break;
+            case 8:
+                ballColor = "#800000"; // maroon
+                break;
+            default:
+                ballColor = "#FFFFFF"; // white
+                break;
+        }
     }
 
     function drawBall(){
@@ -60,14 +88,7 @@
         }
         x+=dx;
         y+=dy;
-    }
-
-    function drawPaddle() {
-        ctx.beginPath();
-        ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-        ctx.fillStyle = "#0095DD";
-        ctx.fill();
-        ctx.closePath();
+        colorN++;
     }
 
     setInterval(draw, 10);
