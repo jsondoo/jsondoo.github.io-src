@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Atari clone</title>
+    <title>Breakout clone</title>
     <style>
         * { padding: 0; margin: 0; }
         canvas { background: #000; display: block; margin: 0 auto; }
@@ -14,7 +14,7 @@
 
 <script>
     var canvas = document.getElementById("myCanvas");
-    var ctx = canvas.getContext("2d"); // tool we use to paint the canvas
+    var ctx = canvas.getContext("2d"); 
 
     var ballRadius = 10;
     var ballX = canvas.width/2;
@@ -80,7 +80,6 @@
     function promptReplay(){
         ctx.font = "12px Arial";
         ctx.fillStyle = "#FFF";
-        // last two parameters are coordinates
         ctx.fillText("Refresh the page to play again",80,160);
     }
 
