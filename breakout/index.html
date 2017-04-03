@@ -13,7 +13,7 @@
 <canvas id="myCanvas" width="600" height="500"></canvas>
 
 <script>
-    // REFERENCE https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript
+    // https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript
     // my code has some added changes
    
     var canvas = document.getElementById("myCanvas");
@@ -133,12 +133,12 @@
                     break;
             }
             for(c = 0; c < brickColumnCount; c++){
-                // pretty cool way of arranging stuff
-                if(bricks[c][r].status == 1) {
+                var b = bricks[c][r]; 
+                if(b.status == 1) {
                     var brickX = (c * (brickWidth + brickPadding)) + brickOffsetLeft;
                     var brickY = (r * (brickHeight + brickPadding)) + brickOffsetTop;
-                    bricks[c][r].x = brickX;
-                    bricks[c][r].y = brickY;
+                    b.x = brickX;
+                    b.y = brickY;
 
                     ctx.rect(brickX, brickY, brickWidth, brickHeight);
                     ctx.fill();
