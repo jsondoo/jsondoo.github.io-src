@@ -13,7 +13,7 @@
 
 <p>Survive as long as you can by dodging the laser balls and not touching the walls. Difficulty increases every 1000 points.</p>
 
-<canvas id="myCanvas" width="500" height="650"></canvas>
+<canvas id="myCanvas" width="500" height="600"></canvas>
 
 
 <script>
@@ -148,7 +148,7 @@
         ctx.beginPath();
         for (i = 30; i < 40; i++){
             ctx.rect(laser[i].x, laser[i].y, 5, 5);
-            ctx.fillStyle = "green";
+            ctx.fillStyle = "#BFFF00";
             ctx.fill();
             laser[i].y -= 3;
         }
