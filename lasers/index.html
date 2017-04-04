@@ -17,44 +17,33 @@
 
 
 <script>
-    // TODO randomize starting position
-    // TODO make laser speed part of object
-
-
-
     var canvas = document.getElementById("myCanvas");
-    var ctx = canvas.getContext("2d"); 
-
+    var ctx = canvas.getContext("2d");
     var playerHeight = 20;
     var playerWidth = 20;
     var playerX = 50;
     var playerY = 50;
 
-    var score = 0;
+    var score = 3000;
 
     var laser = [];
     var numLaser = 40;
-
     var laserInitA = false;
     var laserInitB = false;
     var laserInitC = false;
     var laserInitD = false;
-
 
     // main function
     function main(){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawPlayer();
         wallCollisionDetection();
-
         drawLaser();
         laserCollisionDetection();
-
         score++;
         drawScore();
         requestAnimationFrame(main);
     }
-
     function laserCollisionDetection(){
         for(var i = 0; i < numLaser; i++){
             if(laser[i].x > playerX && laser[i].x < playerX + playerWidth &&
@@ -63,9 +52,7 @@
                 document.location.reload();
             }
         }
-
     }
-
     function drawLaser(){
         var i;
         if(!laserInitA) {
@@ -86,19 +73,16 @@
         if(!laserInitC){
             // pattern C init
             for(i = 20; i < 30; i++){
-                laser[i] = {x: (i-20)*60+20, y: (canvas.height + 5) + (i-20)*20, status: 1};
+                laser[i] = {x: (i-20)*60+30, y: (canvas.height + 5) + (i-20)*20, status: 1};
             }
             laserInitC = true;
         }
-
         if(!laserInitD){
             for(i = 30; i < 40; i++){ // OFFSET i - N is important
-                laser[i] = {x: (i-30)*60+ 5, y: (canvas.height + 5) + (i-30)*30, status: 1};
+                laser[i] = {x: (i-30)*60, y: (canvas.height + 5) + (i-30)*30, status: 1};
             }
             laserInitD = true;
         }
-
-
         if (score > 100 && score < 1000) {
             patternA();
         }
@@ -111,9 +95,7 @@
         else if (score >= 3000 ) {
             patternD();
         }
-
     }
-
     function patternD(){
         ctx.beginPath();
         var i;
@@ -125,7 +107,6 @@
             laser[i].y += 1;
         }
         ctx.closePath();
-
         ctx.beginPath();
         for (i = 10; i < 20; i++){
             ctx.rect(laser[i].x, laser[i].y, 5, 5);
@@ -135,7 +116,6 @@
             laser[i].y += 0.5;
         }
         ctx.closePath();
-
         ctx.beginPath();
         for (i = 20; i < 30; i++){
             ctx.rect(laser[i].x, laser[i].y, 5, 5);
@@ -144,7 +124,6 @@
             laser[i].y -= 2;
         }
         ctx.closePath();
-
         ctx.beginPath();
         for (i = 30; i < 40; i++){
             ctx.rect(laser[i].x, laser[i].y, 5, 5);
@@ -153,7 +132,6 @@
             laser[i].y -= 3;
         }
         ctx.closePath();
-
         if(laser[9].x > canvas.width && laser[9].y > canvas.height){
             laserInitA = false;
         }
@@ -167,7 +145,6 @@
             laserInitD = false;
         }
     }
-
     function patternC(){
         ctx.beginPath();
         var i;
@@ -179,7 +156,6 @@
             laser[i].y += 1;
         }
         ctx.closePath();
-
         ctx.beginPath();
         for (i = 10; i < 20; i++){
             ctx.rect(laser[i].x, laser[i].y, 5, 5);
@@ -189,7 +165,6 @@
             laser[i].y += 0.5;
         }
         ctx.closePath();
-
         ctx.beginPath();
         for (i = 20; i < 30; i++){
             ctx.rect(laser[i].x, laser[i].y, 5, 5);
@@ -198,7 +173,6 @@
             laser[i].y -= 2.5;
         }
         ctx.closePath();
-
         if(laser[9].x > canvas.width && laser[9].y > canvas.height){
             laserInitA = false;
         }
@@ -208,9 +182,7 @@
         if(laser[29].y < 0){
             laserInitC = false;
         }
-
     }
-
     function patternB(){
         ctx.beginPath();
         var i;
@@ -222,7 +194,6 @@
             laser[i].y += 1;
         }
         ctx.closePath();
-
         ctx.beginPath();
         for (i = 10; i < 20; i++){
             ctx.rect(laser[i].x, laser[i].y, 5, 5);
@@ -231,20 +202,16 @@
             laser[i].x -= 3;
             laser[i].y += 0.5;
         }
-
         if(laser[9].x > canvas.width && laser[9].y > canvas.height){
             laserInitA = false;
         }
         if(laser[19].x < 0){
             laserInitB = false;
         }
-
         ctx.closePath();
     }
-
     function patternA(){
         ctx.beginPath();
-
         // i = 0 to 10 for pattern A
         var i;
         for (i = 0; i < 10; i++){
@@ -254,20 +221,16 @@
             laser[i].x += 2;
             laser[i].y += 1;
         }
-
         if(laser[9].x > canvas.width && laser[9].y > canvas.height){
             laserInitA = false;
         }
         ctx.closePath();
     }
-
-
     function drawScore(){
         ctx.font = "12px Arial";
         ctx.fillStyle = "#FFF";
         ctx.fillText("Score: " + score, 8, 20);
     }
-
     function drawPlayer() {
         ctx.beginPath();
         ctx.rect(playerX, playerY, playerWidth, playerHeight);
@@ -277,21 +240,17 @@
         ctx.stroke();
         ctx.closePath();
     }
-
     function wallCollisionDetection(){
         if(playerX < 0 || playerX + playerWidth > canvas.width || playerY < 0 || playerY + playerHeight > canvas.height){
             alert("game over, your score was: " + score);
             document.location.reload();
         }
     }
-
-
     // mouse control
     document.addEventListener("mousemove", mouseMoveHandler, false);
     function mouseMoveHandler(e){
         var relativeX = e.clientX - canvas.offsetLeft;
         var relativeY = e.clientY;
-
         if(relativeX > 0 && relativeX < canvas.width) {
             playerX = relativeX - playerWidth/2;
         }
@@ -299,7 +258,6 @@
             playerY = relativeY - playerHeight/2;
         }
     }
-
     main();
 </script>
 
