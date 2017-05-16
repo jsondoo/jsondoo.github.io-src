@@ -1,6 +1,6 @@
 # jsondoo.github.io
 <h1> Github Webpages </h1>
-<a href="https://jsondoo.github.io/html5up-aerial">Website Template</a>
+<a href="https://jsondoo.github.io/website">Website Template</a>
 
 
 <ol>
