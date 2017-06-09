@@ -10,13 +10,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <script src="https://use.fontawesome.com/edaf6ffd93.js"></script>
-
     <!-- Custom CSS -->
     <link href="css/footer.css" rel="stylesheet">
     <link href="css/icon.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
     <link href="css/font.css" rel="stylesheet">
+
+    <!--fontawesome-->
+    <script type="text/javascript" src="js/fontawesome.js"></script>
+
+    <!--highlight.js-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 
 </head>
 
@@ -55,16 +61,45 @@
 
 <div class="container">
     <h1>JeongSoo Doo</h1>
-    <p>Hi! I am a computer science student at University of British Columbia. </p>
+    <p>Hello, I am a computer science student at University of British Columbia. </p>
+    <p>Feel free to check out my <a href="https://www.github.com/jsondoo">Github</a>, and connect with me on
+        <a href="https://www.linkedin.com/in/jason-doo/">LinkedIn.</a></p>
+    <p>I am interested in:</p>
+    <ul>
+        <li>Software engineering and approaches to building scalable, affordable systems</li>
+        <li>Data mining and rendering visualizations</li>
+        <li>Applications of linear algebra (image compression, markov chains, etc.)</li>
+        <li>Algorithms and data structures</li>
+    </ul>
+    <hr />
+    <p>Some of my favorite algorithms:</p>
+    <p>#1 Sieve of Eratosthenes - O(n log log n) time to generate primes up to n</p>
+    <pre><code class="cpp">vector&lt;int&gt; generatePrimes(int n){
+	bool prime[n+1];
+	memset(prime, true, sizeof(prime));
 
-    <p>Any text in a <code>pre</code> element preserves spaces and breaks.</p>
-    <pre>for(int i = 0; i < 10; ++i){<br>   System.out.println(i);<br>}
-    </pre>
+	int m = sqrt(n);
+	for(int i = 2; i <= m; ++i){
+		if(prime[i]){
+			// mark all multiples of i as not prime
+			for(int j = i+i; j <= n; j += i){
+				prime[j] = false;
+			}
+		}
+	}
+
+	vector&lt;int&gt; primes;
+	for(int i = 2; i <= n; ++i)
+		if(prime[i]) primes.push_back(i);
+
+	return primes;
+}</code></pre>
+
 </div>
 
 <footer class="footer">
     <div class="container">
-        <span class="text-muted">&copy; 2017 JeongSoo Doo, All rights reserved.</span>
+        <span class="text-muted">&copy; 2017 jsondoo.github.io, All rights reserved.</span>
     </div>
 </footer>
 
