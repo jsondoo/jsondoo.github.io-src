@@ -71,26 +71,66 @@
     </ul>
     <hr />
 
-    <pre><code class="cpp">vector&lt;int&gt; generatePrimes(int n){
-	bool prime[n+1];
-	memset(prime, true, sizeof(prime));
+    <pre><code class="java">/**
+ * 0-1 Knapsack Problem DP Solution
+ */
+public class Knapsack {
 
-	int m = sqrt(n);
-	for(int i = 2; i <= m; ++i){
-		if(prime[i]){
-			// mark all multiples of i as not prime
-			for(int j = i+i; j <= n; j += i){
-				prime[j] = false;
-			}
-		}
-	}
+    public Knapsack(){
+    }
 
-	vector&lt;int&gt; primes;
-	for(int i = 2; i <= n; ++i)
-		if(prime[i]) primes.push_back(i);
+    public int ks (int[] wt, int[] val, int target){
+        int numItems = wt.length;
 
-	return primes;
-}</code></pre>
+        // state (i,j) represents max possible value with i+1 items and j weight
+        int[][] dp = new int[numItems][target+1];
+
+        // initialize column 0 to zeros
+        for(int r = 0; r < numItems; ++r) {
+            dp[r][0] = 0;
+        }
+
+        // initialize row 0 (max value using only first item)
+        for(int w = 0; w < target + 1; ++w){
+            if(wt[0] > w) // weight of first item is greater than ks capacity
+                dp[0][w] = 0;
+            else
+                dp[0][w] = val[0];
+        }
+
+        // build DP top down
+        for(int i = 1; i < numItems; ++i){
+            for(int j = 1; j < target + 1; ++j){
+                if(wt[i] <= j) {
+                    // pick max value of picking item i or not
+                    dp[i][j] = Math.max(val[i] + dp[i - 1][j - wt[i]], dp[i - 1][j]);
+                } else {
+                    // can't pick anything, same answer as j-1
+                    dp[i][j] = dp[i][j-1];
+                }
+            }
+        }
+
+        return max(dp);
+    }
+
+    // returns max value in a 2D array
+    private int max(int[][] arr){
+        int r = arr.length;
+        int c = arr[0].length;
+
+        int max = Integer.MIN_VALUE;
+        for(int i = 0; i < r; ++i){
+            for(int j = 0; j < c; ++j){
+                max = Math.max(max, arr[i][j]);
+            }
+        }
+
+        return max;
+    }
+
+}
+</code></pre>
 
 </div>
 
@@ -99,7 +139,6 @@
         <span class="text-muted">&copy; 2017 jsondoo.github.io, All rights reserved.</span>
     </div>
 </footer>
-
 
 </body>
 </html>
