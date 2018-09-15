@@ -20,14 +20,16 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('Github', 'http://github.com/jsondoo'),
-         ('Python.org', 'http://python.org/'),
-         ('Jinja2', 'http://jinja.pocoo.org/'),)
+LINKS = (('github', 'http://github.com/jsondoo'),
+         ('LinkedIn', 'http://linkedin.com/in/jason-doo'),)
 
 # Social widget
-SOCIAL = (('Github', 'http://github.com/jsondoo'),
-          ('LinkedIn', 'http://linkedin.com/in/jason-doo'),)
+# SOCIAL = (('Github', 'http://github.com/jsondoo'),
+#          ('LinkedIn', 'http://linkedin.com/in/jason-doo'),)
+
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
+
+THEME = "flex"
