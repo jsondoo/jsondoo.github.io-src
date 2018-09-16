@@ -20,6 +20,7 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
+# any pages will be shown with these links
 LINKS = (('github', 'http://github.com/jsondoo'),
          ('LinkedIn', 'http://linkedin.com/in/jason-doo'),)
 
@@ -30,6 +31,6 @@ LINKS = (('github', 'http://github.com/jsondoo'),
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+# RELATIVE_URLS = True
 
 THEME = "flex"
