@@ -4,7 +4,15 @@ from __future__ import unicode_literals
 
 AUTHOR = 'Jason Doo'
 SITENAME = 'Jason Doo'
-SITEURL = ''
+SITEURL = 'jdoo.ca'
+
+SITETITLE = 'Jason Doo'
+SITESUBTITLE = 'Aspiring Software Developer'
+
+MAIN_MENU = True
+MENUITEMS = (('Archives', '/archives.html'),
+             ('Categories', '/categories.html'),
+             ('Tags', '/tags.html'),)
 
 PATH = 'content'
 
@@ -19,18 +27,17 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Blogroll
 # any pages will be shown with these links
-LINKS = (('github', 'http://github.com/jsondoo'),
-         ('LinkedIn', 'http://linkedin.com/in/jason-doo'),)
+# LINKS = ()
 
-# Social widget
-# SOCIAL = (('Github', 'http://github.com/jsondoo'),
-#          ('LinkedIn', 'http://linkedin.com/in/jason-doo'),)
+SOCIAL = (
+    ('github', 'http://github.com/jsondoo'),
+    ('linkedin', 'http://linkedin.com/in/jason-doo'),
+)
 
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+RELATIVE_URLS = True
 
 THEME = "flex"
