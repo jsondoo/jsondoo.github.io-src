@@ -6,13 +6,13 @@ AUTHOR = 'Jason Doo'
 SITENAME = 'Jason Doo'
 SITEURL = 'jdoo.ca'
 
-SITETITLE = 'Jason Doo'
+SITETITLE = 'Jason (JeongSoo) Doo'
 SITESUBTITLE = 'Aspiring Software Developer'
 
 MAIN_MENU = True
 MENUITEMS = (('Archives', '/archives.html'),
              ('Categories', '/categories.html'),
-             ('Tags', '/tags.html'),)
+            )
 
 PATH = 'content'
 
