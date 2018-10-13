@@ -4,15 +4,15 @@ Source code for generating static files for [my site](https://jdoo.ca)
 
 Powered by Pelican.
 
-# Testiing Locally
+## Testing Locally
 ```
 pelican content                       # generate static files
 cd output && python -m pelican.server # localhost:8000
 ```
 
-# Deploying 
+## Deploying 
 
-Push your changes to the submodule which holds the static files
+Generate content into your submodule then push the changes in your submodule.
 ```
 pelican content -s publishconf.py     # generate static files for production
 cd output
