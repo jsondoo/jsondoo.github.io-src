@@ -5,4 +5,5 @@ Authors: Jason Doo
 
 Hello! I am a 3rd year computer science student at Univeristy of British Columbia.
 
-In my free time, I love to work on software and explore all the different languages and technologies out there. My main interests are data science and full stack web development.
+In my free time, I love to work on software and explore all the different languages and technologies out there. My main interests are data science and full stack web development. 
+
